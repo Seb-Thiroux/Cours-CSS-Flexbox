@@ -1,0 +1,908 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>Exercice CSS Flexbox</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+        
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body class="site">
+
+        <header class="content-container clearfix">
+        	<h1>flexbox</h1>
+        	<nav>
+        		<ul class="main-navigation">
+        			<li><a href="exercice-1.html">layout 3 colonnes</a></li>
+        			<li><a href="exercice-2.html">sticky footer</a></li>
+        			<li><a href="exercice-3.html">centrage vertical</a></li>
+        			<li><a href="exercice-4.html">menu flexible</a></li>
+        			<!-- <li><a href="exercice-5.html">media object</a></li> -->
+        		</ul>
+        	</nav>
+        </header>
+        <div class="content-container home-content">
+            <main class="main-content">
+            	<h2>Fonctionnement de flexbox</h2>
+            	<h3>Flexbox fonctionne avec :</h3> 
+            	<p>Un <i>flex-container</i> qui permet de créer le contexte pour l'utilisation de Flexbox. Le ou les enfants directs d'un élément avec la propriété display: flex; deviennent automatiquement des <i>flex-items</i>. Il est possible d'appliquer la propriété display: flex; ou display: inline-flex; à tous les types d'éléments HTML.</p>
+
+            	<h2>Propriétés pour le parent (flex container)</h2>
+
+            	<h3>display</h3>
+            	<p>On donne la propriété display:flex; à un élément pour lui donner un contexte <i>flex</i> qui va permettre à ses enfants directs d'être flexibles</p>
+
+            	<div class="container">
+            		<div class="item item-size">1</div>
+            		<div class="item item-size">2</div>
+            		<div class="item item-size">3</div>
+            	</div>
+            	<div class="code-container"><span>code</span><pre>.container {
+    display: flex; /* ou inline-flex */
+}			    </pre></div>
+    	
+    			<p>À savoir : à partir du moment ou un élément HTML a la propriété display: flex, certaines propriétés n'auront plus d'effet sur lui. La propriété <i>columns</i> de CSS ne fonctionne plus correctement, ainsi que <i>float</i>.</p>
+
+    			<h3>flex-direction</h3>
+    			<p>Cette propriété permet de déterminer le sens d’affichage sur l'axe horizontal ou l'axe vertical des éléments <i>flex-items</i> (enfants) d'un <i>flex container</i> (parent).</p>
+    			<h4>Ses différentes valeurs sont :</h4>
+    			<ul>
+    				<li><i>row</i> (ou rangée. C'est la valeur par défaut des <i>flex-items</i>. Cela donne l'alignement horizontal)</li>
+    				<li><i>row-reverse</i> (inverse le sens des éléments alignés horizontalement</li>
+    				<li><i>column</i> (alignement vertical. Il s'agit de l'alignement original des éléments HTML qui ont la propriété display: block; par défaut.</li>
+    				<li><i>column-reverse</i> (inverse le sens des éléments alignés verticalement</li>
+    			</ul>
+
+    			<h5>flex-direction: row</h5>
+
+    			<div class="container flex-direction-row">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+
+            	<div class="code-container"><span>code</span><pre>.flex-direction-row {
+    flex-direction: row;
+}			    </pre></div>
+
+    			<h5>flex-direction: row-reverse</h5>
+
+    			<div class="container flex-direction-row-reverse">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.flex-direction-row-reverse {
+    flex-direction: row-reverse;
+}			    </pre></div>
+
+    			<h5>flex-direction: column</h5>
+
+    			<div class="container flex-direction-column">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.flex-direction-column {
+       flex-direction: column;
+    }			</pre></div>
+
+    			<h5>flex-direction: column-reverse</h5>
+
+    			<div class="container flex-direction-column-reverse">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.flex-direction-column-reverse {
+       flex-direction: column-reverse;
+    }			</pre></div>
+
+    			<h3>flex-wrap</h3>
+    			<p>Par défaut, les <i>flex items</i> vont essayer de tenir sur une ligne. Vous pouvez changez ce comportement avec la propriété <i>flex-wrap</i>.</p>
+
+    			<h5>flex-wrap: wrap</h5>
+
+    			<div class="container">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.container {
+       flex-wrap: wrap;
+    }			</pre></div>
+
+    			<h5>flex-wrap: nowrap</h5>
+
+    			<div class="container nowrap">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.container {
+       flex-wrap: nowrap;
+       overflow-x: scroll;
+    }			</pre></div>
+
+    			<h3>flex-flow</h3>
+    			<p>C'est une propriété qui permet de regrouper les propriétés <i>flex-direction</i> et <i>flex-wrap</i>. Par défaut ses valeurs sont <i>row nowrap</i></p>
+            	<div class="code-container"><span>code</span><pre>.container {
+       flex-flow: row nowrap;
+    }           </pre></div>
+
+    			<h3>justify-content</h3>
+    			<p>Cela permet de définir l'alignement le long de l'axe principal (vertical). Cela aide à redistribuer l'espace disponible entre des éléments flexibles qui se trouvent sur cet axe.</p>
+
+    			<h5>justify-content: flex-start</h5>
+
+    			<div class="container justify-content-flex-start">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.justify-content-flex-start {
+       justify-content: flex-start;
+    }			</pre></div>
+
+    			<h5>justify-content: flex-end</h5>
+
+    			<div class="container justify-content-flex-end">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.justify-content-flex-end {
+       justify-content: flex-end;
+    }			</pre></div>
+
+    			<h5>justify-content: center</h5>
+
+    			<div class="container justify-content-center">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.justify-content-center {
+       justify-content: center;
+    }			</pre></div>
+
+    			<h5>justify-content: space-between</h5>
+
+    			<div class="container justify-content-space-between">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">4</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">5</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.justify-content-space-between {
+       justify-content: space-between;
+    }			</pre></div>
+
+    			<h5>justify-content: space-around</h5>
+
+    			<div class="container justify-content-space-around">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">4</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">5</p>
+            		</div>
+            	</div>
+            	
+            	<div class="code-container"><span>code</span><pre>.justify-content-space-around {
+       justify-content: space-around;
+    }			</pre></div>
+
+    			<h3>align-items</h3>
+    			<p>Cela défini la distribution des éléments flex par défaut par rapport à l'axe de croisement (horizontal). This defines the default behaviour for how flex items are laid out along the cross axis on the current line. Think of it as the justify-content version for the cross-axis (perpendicular to the main-axis).</p>
+
+    			<h5>align-items: flex-start</h5>
+
+    			<div class="container align-items align-items-flex-start">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	<div class="code-container"><span>code</span><pre>.align-items-flex-start {
+       align-items: flex-start;
+    }			</pre></div>
+
+    			<h5>align-items: flex-end</h5>
+
+    			<div class="container align-items align-items-flex-end">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	<div class="code-container"><span>code</span><pre>.align-items-flex-end {
+       align-items: flex-end;
+    }			</pre></div>
+
+    			<h5>align-items: center</h5>
+
+    			<div class="container align-items align-items-center">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	<div class="code-container"><span>code</span><pre>.align-items-center {
+       align-items: center;
+    }			</pre></div>
+
+    			<h5>align-items: stretch</h5>
+
+    			<div class="container align-items align-items-stretch">
+            		<div class="item align-container">
+            			<p class="align-item">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item">3</p>
+            		</div>
+            	</div>
+            	<div class="code-container"><span>code</span><pre>.align-items-stretch {
+       align-items: stretch;
+    }			</pre></div>
+
+    			<h5>align-items: baseline</h5>
+
+    			<div class="container align-items align-items-baseline">
+            		<div class="item align-container">
+            			<p class="align-item baseline-item-1">1</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item baseline-item-2">2</p>
+            		</div>
+            		<div class="item align-container">
+            			<p class="align-item baseline-item-3">3</p>
+            		</div>
+            	</div>
+            	<div class="code-container"><span>code</span><pre>.align-items-baseline {
+       align-items: baseline;
+    }			</pre></div>
+
+    			<h3>align-content</h3>
+                <p>Cette propriété aligne les lignes d'élément dans un flex container lorsqu'il y a de l'espace, de la même manière que justify-content aligne des flex-items (élément individuel) sur l'axe principal.</p><p>Note: cette propriété n'a aucun effet lorsqu'il n'y a qu'une seule ligne d'éléments flex items.</p>
+
+                <h5>align-content: flex-start</h5>
+
+                <div class="container align-content align-content-flex-start">
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.align-content-flex-start {
+       align-content: flex-start;
+    }           </pre></div>
+
+    			<h5>align-content: flex-end</h5>
+                
+                <div class="container align-content align-content-flex-end">
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.align-content-flex-end {
+       align-content: flex-end;
+    }           </pre></div>
+
+    			<h5>align-content: center</h5>
+                
+                <div class="container align-content align-content-center">
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.align-content-center {
+       align-content: center;
+    }           </pre></div>
+
+    			<h5>align-content: stretch</h5>
+                
+                <div class="container align-content align-content-stretch">
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.align-content-stretch {
+       align-content: stretch;
+    }           </pre></div>
+
+    			<h5>align-content: space-between</h5>
+                
+                <div class="container align-content align-content-space-between">
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.align-content-space-between {
+       align-content: space-between;
+    }           </pre></div>
+
+    			<h5>align-content: space-around</h5>
+                
+                <div class="container align-content align-content-space-around">
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                    <div class="item align-container"><p class="align-item">1</p></div>
+                    <div class="item align-container"><p class="align-item">2</p></div>
+                    <div class="item align-container"><p class="align-item">3</p></div>
+                    <div class="item align-container"><p class="align-item">4</p></div>
+                    <div class="item align-container"><p class="align-item">5</p></div>
+                    <div class="item align-container"><p class="align-item">6</p></div>
+                    <div class="item align-container"><p class="align-item">7</p></div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.align-content-space-around {
+       align-content: space-around;
+    }           </pre></div>
+
+    			<h2>Propriétés pour les enfants (flex items)</h2>
+
+    			<h3>order</h3>
+                <p>Par défaut, les flex items s'affichent dans le même ordre que la source (le fichier HTML). Cependant, la propriété <i>order</i> permet de contrôler l'odre des <i>flex-items</i> dans un <i>flex container</i>.</p>
+
+                <h5>order: 1</h5>
+                <div class="container order">
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">2</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">3</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">4</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">5</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">6</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">7</p>
+                    </div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.item {
+       order: un nombre entier;
+    }           </pre></div>
+
+    			<h3>flex-grow</h3>
+                <p>Cela permet d'élargir un flex item si on en a besoin. On lui donne une valeur sans unité de mesure qui correspond a une proportion par rapport aux autres éléments (flex items). Ces unités déterminent l'espace que prendra l'élément en fonction de l'espace disponigle de le flex container.</p>
+                <p>Si tous les éléments on une valeur flex-grow: 1; ils prendront tous la même quantité de place dans l'espace disponible dans le flex container. Si un des flex-items a une valeur de 2, il prendra 2 fois plus de place que les autres éléments avec une valeur 1.</p>
+
+                <h5>flex-grow: exemple 1</h5>
+                <div class="container flex-grow">
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.item {
+       flex-grow: 1;
+    }           </pre></div>
+
+    			<h5>flex-grow: exemple 2</h5>
+                <div class="container flex-grow-2">
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">2</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.flex-grow-2 .item {
+       flex-grow: 1;
+    }
+    .flex-grow-2 .item:nth-child(2) {
+       flex-grow: 2;
+    }           </pre></div>
+
+    			<h5>flex-grow: exemple 3</h5>
+                <div class="container flex-grow-3">
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">2</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">3</p>
+                    </div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.flex-grow-2 .item {
+       flex-grow: 1;
+    }
+    .flex-grow-2 .item:nth-child(2) {
+       flex-grow: 2;
+    }
+    .flex-grow-3 .item:nth-child(3) {
+       flex-grow: 3;
+    }           </pre></div>
+
+                <h3>flex-shrink</h3>
+                <p>Cela permet de définir la capacité d'un élément flex à rétrécir si nécessaire.</p>
+                <p>Il n'est pas possible d'utiliser des nombres négatifs.</p>
+
+                <h5>flex-shrink: exemple 3</h5>
+                <div class="container flex-grow-3 flex-shrink-1">
+                    <div class="item align-container">
+                        <p class="align-item">1</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">2</p>
+                    </div>
+                    <div class="item align-container">
+                        <p class="align-item">3</p>
+                    </div>
+                </div>
+                <div class="code-container"><span>code</span><pre>.item {
+       flex-shrink: nombre;
+    }         </pre></div>
+
+                <h3>flex-basis</h3>
+                <p>Cela permet de définir la taille par défaut d'un élément avant que l'espace qui l'entoure soit redistribué. Cela peut-être une longueur (exemple : 20%, 6rem, etc.) ou bien cela peut-être un mot clé. (les mots sont clés sont encore très mal supportés par les navigateurs, nous éviterons donc de les aborder pour le moment.</p>
+                <p>Si il est réglé à 0, l'espace distribué autour du contenu n'est pas pris en compte. Si il est réglé sur auto, l'espace disponible est redistribué en fonction de la valeur flex-grow de l'élément.</p>
+                <div class="code-container"><span>code</span><pre>.item {
+      flex-basis: longueur | auto; /* default auto */
+    }           </pre></div>
+
+                <h3>flex</h3>
+                <p>C'est la version raccourcie de flex-grow, flex-shrink et flex-basis. Le second et troisième paramètres (flex-shrink et flex-basis) sont optionnels. Les valeurs par défaut sont : 0 1 auto.</p>
+                <p>Il est recommandé d'utiliser cette forme plutôt que de spécifier les propriétés individuellement. La version raccourcie rèble automatiquement les autres valeurs intelligement.</p>
+                <div class="code-container"><span>code</span><pre>.item {
+      flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+    }           </pre></div>
+
+                <h3>align-self</h3>
+                <p>Cela permet d'écraser l'alignement précisé par la propriété align-items pour des éléments flex individuels. Voir la propriété align-items pour comprendre quelles sont les valeurs possibles.</p>
+                <div class="code-container"><span>code</span><pre>.item {
+      align-self: auto | flex-start | flex-end | center | baseline | stretch;
+    }           </pre></div>
+
+                <h2>Il est important de noter que les propriétés float, clear et vertical-align n'ont pas d'effet sur un élément flex.</h2>
+
+
+            </main>
+            <aside class="properties-nav">
+                <nav>
+                    <ul>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h5>Propriétés parent</h5></a></li>
+                                <li><a href="#"><h6>display</h6></a></li>
+                                <li class="child-item"><a href="#">flex</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h6>flex-direction</h6></a></li>
+                                <li class="child-item"><a href="#">row</a></li>
+                                <li class="child-item"><a href="#">row-reverse</a></li>
+                                <li class="child-item"><a href="#">column</a></li>
+                                <li class="child-item"><a href="#">column-reverse</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h6>flex-wrap</h6></a></li>
+                                <li class="child-item"><a href="#">wrap</a></li>
+                                <li class="child-item"><a href="#">nowrap</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h6>flex-flow</h6></a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h6>justify-content</h6></a></li>
+                                <li class="child-item"><a href="#">flex-start</a></li>
+                                <li class="child-item"><a href="#">flex-end</a></li>
+                                <li class="child-item"><a href="#">center</a></li>
+                                <li class="child-item"><a href="#">space-between</a></li>
+                                <li class="child-item"><a href="#">space-around</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h6>align-items</h6></a></li>
+                                <li class="child-item"><a href="#">flex-start</a></li>
+                                <li class="child-item"><a href="#">flex-end</a></li>
+                                <li class="child-item"><a href="#">center</a></li>
+                                <li class="child-item"><a href="#">stretch</a></li>
+                                <li class="child-item"><a href="#">baseline</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h6>align-content</h6></a></li>
+                                <li class="child-item"><a href="#">flex-start</a></li>
+                                <li class="child-item"><a href="#">flex-end</a></li>
+                                <li class="child-item"><a href="#">center</a></li>
+                                <li class="child-item"><a href="#">stretch</a></li>
+                                <li class="child-item"><a href="#">space-between</a></li>
+                                <li class="child-item"><a href="#">space-around</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="#"><h5>Propriétés enfant</h5></a></li>
+                                <li><a href="#"><h6>order</h6></a></li>
+                                <li><a href="#"><h6>flex-grow</h6></a></li>
+                                <li><a href="#"><h6>flex-shrink</h6></a></li>
+                                <li><a href="#"><h6>flex-basis</h6></a></li>
+                                <li><a href="#"><h6>flex</h6></a></li>
+                                <li><a href="#"><h6>align-self</h6></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </div>
+        <footer>
+            <section class="footer content-container">
+                <h4>Rappel de menu</h4>
+                <nav>
+                    <ul class="main-navigation">
+                        <li><a href="exercice-1.html">layout 3 colonnes</a></li>
+                        <li><a href="exercice-2.html">sticky footer</a></li>
+                        <li><a href="exercice-3.html">centrage vertical</a></li>
+                        <li><a href="exercice-4.html">menu flexible</a></li>
+                        <!-- <li><a href="exercice-5.html">media object</a></li> -->
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,206 @@
+/* – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – –
+
+Exemple Mise en Page 3 Colonnes Responsives + Sticky Footer
+
+– – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – */
+.wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  flex: 1;
+}
+.wrapper > * {
+  flex: 1 100%;
+}
+.layout-3-col .wrapper > * {
+  padding: 1em;
+}
+footer {
+  background: #333;
+  color: whitesmoke;
+  font-weight: 200;
+}
+.aside-1 {
+  background: #ddd;
+}
+
+.aside-2 {
+  background: tomato;
+}
+
+@media all and (min-width: 720px) {
+  .wrapper {
+    flex-flow: row wrap;
+  }
+  .aside {
+    flex: 1;
+  }
+}
+@media all and (min-width: 960px) {
+  h1 {
+    float: left;
+  }
+  .main {
+    flex: 3 0px;
+    order: 2;
+  }
+  .aside {
+    flex: 1;
+  }
+  .aside-1 {
+    order: 1;
+  }
+  .aside-2 {
+    order: 3;
+  }
+}
+
+/* Styles for Sticky Footer – – – – – – – – – – – – – – – – – – */
+.footer h4 {
+  color: rgba(238,223,175,.7);
+  font-weight: 400;
+  text-align: center;
+}
+.footer nav ul {
+  margin-top: 1.1em;
+  padding: 1.35em 0 2.5em;
+}
+.footer nav a:hover {
+  color: orange;
+}
+@media all and (min-width: 960px) {
+  .footer h4 {
+    float: left;
+  }
+  .footer nav ul {
+    margin-top: 1.1em;
+    /*padding-bottom: 4em;*/
+  }
+}
+
+/* – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – –
+
+Exemple Centrage Vertical
+
+– – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – */
+.align {
+  background: #ddd;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+.align h1 {
+  color: #fff;
+  font-weight: 400;
+  float: none;
+}
+.align-bloc {
+  background: tomato;
+  border-radius: 6px;
+  padding: 30px;
+}
+
+/* – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – –
+
+Flex Main Menu
+
+– – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – */
+.main-navigation {
+  list-style: none;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  padding: 0;
+}
+.main-navigation a {
+  display: block;
+}
+.main-navigation li:last-of-type a {
+  border-bottom: none;
+}
+.main-navigation a:hover {
+  text-decoration: underline;
+}
+
+/* – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – –
+
+Media Object
+
+– – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – – */
+
+.media-container {
+  display: flex;
+}
+.media {
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.media-figure {
+  margin-right: 1em;
+  width: 25%;
+}
+
+.media-body {
+  flex: 1;
+  padding: 0 1em 0 0;
+}
+
+@media all and (max-width: 639px) {
+  .main-navigation a,
+  .active-link {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+}
+@media all and (min-width: 640px) {
+  .main-navigation {
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+  }
+  .main-navigation a {
+    display: inline-block;
+  }
+  .main-navigation li {
+    margin-left: 5px;
+  }
+  .main-navigation li::after {
+    content: "/";
+    margin-left: 2px;
+  }
+  .main-navigation li:last-of-type::after {
+    content: "";
+  }
+}
+
+@media all and (min-width: 960px) {
+  .main-navigation {
+    justify-content: flex-end;
+    margin: 2.25em 0 0;
+    padding: 0;
+  }
+  .main-navigation li {
+    margin-left: 15px;
+  }
+}
+
+
+

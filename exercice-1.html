@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>Flexbox Mise en page 3 colonnes</title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+        
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body class="site layout-3-col">
+        <header class="content-container clearfix">
+        	<h1><a href="index.html">flexbox</a></h1>
+        	<nav>
+        		<ul class="main-navigation">
+        			<li class="active-link">layout 3 colonnes</li>
+        			<li><a href="exercice-2.html">sticky footer</a></li>
+        			<li><a href="exercice-3.html">centrage vertical</a></li>
+        			<li><a href="exercice-4.html">menu flexible</a></li>
+        			<!-- <li><a href="exercice-5.html">media object</a></li> -->
+        		</ul>
+        	</nav>
+        </header>
+        <div class="wrapper content-container">
+            <main class="main">
+                <article>
+                    <h3>Layout 3 colonnes.</h3>
+                    <h4>Comment est construite cette page ?</h4>
+                    <p>La mise en page est réalisée grâce à <i>Flexbox</i>. Il y a entre autres un menu flexible qui change de forme en fonction de <i>media queries</i> défini dans <i>CSS</i>. Il y a également un footer qui reste en bas de page (sticky footer) et enfin la distribution de différentes parties de la page s'adapte elles aussi en fonction des <i>media queries</i></p>
+                    <p>La partie contenant le contenu principal du site <i>main</i> et les deux <i>aside</i> sont enveloppées dans un contenant auquel on a donné la classe <i>.wrapper</i>. Ce dernier permet de créer le contexte <i>flex</i> avec la propriété <i>display: flex;</i>. On ajoute la propriété <i>flex-flow: column wrap</i> afin de répartir le contenu en une seule colonne pour les petits écrans (les blocs s'empiles.</p>
+                    <p>Au passage du premier media querie, on change la propriété <i>flex-flow: row wrap</i> pour obtenir des éléments qui s'alignent horizontalement. On ajoute la propriété <i>flex: 1;</i> aux éléments avec la classe <i>.aside</i> pour leur dire de prendre l'espace dont ils ont besoin sur la rangée, ce qui permet de les aligner côte à côte. Avec le troisième media querie, on donne la propriété <i>flex: 3;</i> au contenu principal <i>.main</i>, ce qui va l'intégrer dans le contexte <i>flex-flow: row;</i>. En lui donnant la valeur 3 on indique qu'il doit prendre 3 fois plus d'espace que les autres éléments avec une valeur <i>flex: 1;</i>.</p>
+                    <p>Les éléments HTML sont ensuite ré-ordonnés avec la propriété <i>order: un numbre;</i></p>
+                    <div class="code-container"><span>code</span>
+                    <pre>.wrapper {
+   display: flex;
+   flex-flow: column wrap;
+   flex: 1;
+}                       </pre></div>
+                    <p>Vous noterez dans le code ci-dessus qu'on a également donné la propriété <i>flex: 1;</i> à l'élément avec la classe <i>wrapper</i>. C'est parce que celui-ci se trouve également dans un contexte <i>flex</i> défini sur l'élément <i>body</i>. Ceci nous permet d'avoir un footer qui reste en bas de page même si celle-ci est vide.</p>
+
+
+                    <h3>Crédits</h3>
+                    <p>Cet exemple est inspiré d'une démo créé sur codepen. <a href="http://codepen.io/team/css-tricks/pen/jqzNZq" target="_blank">Voir la démo sur Codepen</a></p>
+
+                </article>
+            </main>
+            <aside class="aside aside-1">
+                <h3>Aside 1</h3>
+                <p>Cette <i>sidebar</i> se trouve par défaut sous le contenu principal (<i>main</i>)</p>
+            </aside>
+            <aside class="aside aside-2">
+                <h3>Aside 2</h3>
+            </aside>
+        </div>
+        <footer>
+            <section class="footer content-container">
+                <h4>Rappel de menu</h4>
+                <nav>
+                    <ul class="main-navigation">
+                        <li class="active-link">layout 3 colonnes</li>
+                        <li><a href="exercice-2.html">sticky footer</a></li>
+                        <li><a href="exercice-3.html">centrage vertical</a></li>
+                        <li><a href="exercice-4.html">menu flexible</a></li>
+                        <!-- <li><a href="exercice-5.html">media object</a></li> -->
+                    </ul>
+                </nav>
+            </section>
+        </footer>
+        
+    </body>
+</html>
